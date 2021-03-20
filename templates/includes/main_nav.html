@@ -52,7 +52,7 @@
                 </div>
             </li>
             <li class="nav-item me-3 me-lg-0 mx-5 mt-2">
-                <a class="{% if grand_total %} {% else %}text-black{% endif %} nav-link" href="{% url 'view_bag' %}">
+                <a class="{% if grand_total %} {% else %}text-black{% endif %} nav-link" href="{% url 'view_cart' %}">
                     <div class="text-center text-white">
                         <div><i class="fas fa-shopping-cart"></i></div>
                         <p><small class="my-0">
@@ -139,7 +139,7 @@
                             </div>
                         </li>
                         <li class="nav-item mt-3 me-lg-0 border-bottom border-dark">
-                            <a class="{% if grand_total %} font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_bag' %}">
+                            <a class="{% if grand_total %} font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_cart' %}">
                                 <div class="text-center">
                                     <div><i class="fas fa-shopping-cart fa-lg"></i></div>
                                     <p class="my-0">
