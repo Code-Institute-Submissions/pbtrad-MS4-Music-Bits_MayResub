@@ -49,7 +49,7 @@
                         style="max-width: 10rem;">
                         <div class="form-group mb-2">
                             <label for="quantity1">Quantity</label>
-                            <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
+                            <form class="form update-form" method="POST" action="{% url 'adjust_cart' item.item_id %}">
                                 {% csrf_token %}
                                 <div class="form-group">
                                     <div class="input-group">
@@ -89,7 +89,7 @@
                                 </path>
                             </svg>Update cart</button>
                         <button class="remove-item btn btn-outline-danger btn-sm btn-block mb-2"
-                            id="remove_{{ item.item_id }}" data-product_size="{{ item.size }} type=" button">
+                            id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" class="feather feather-trash-2 mr-1">
@@ -109,7 +109,7 @@
             {% for item in cart_items %}
             <div class="col-xl-3 col-md-4 pt-3 pt-md-0">
                 <h2 class="h6 px-4 py-1 bg-secondary text-center">Subtotal</h2>
-                <div class="h3 text-center py-1">{{ item.product.price | calc_subtotal:item.quantity }}</div>
+                <div class="h3 text-center py-1">500</div>
                 <hr>
                 <td colspan="5" class="pt-5 text-right">
                     <h6><strong>Cart Total: €{{ total|floatformat:2 }}</strong></h6>

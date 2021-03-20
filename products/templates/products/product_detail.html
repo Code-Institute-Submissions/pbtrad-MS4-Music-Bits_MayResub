@@ -75,8 +75,8 @@
                         
                         <div class="form-group">
                             <label>Size</label>
-                            {% with product.string_gauge as s %}
-                                    {% if s %}
+                            {% with product.string_gauge as sg product.has_sizes as s %}
+                                    {% if sg %}
                                     <div class="col-12">
                                         <p><strong>String Gauge:</strong></p>
                                         <select class="form-control rounded-0 w-50" name="product_size" id='id_product_size'>
@@ -85,9 +85,21 @@
                                             <option value="light">Light</option>
                                             <option value="extra-light">Extra-Light</option>
                                         </select>
-                        </div>
-                        {% endif %}
-                        <div class="col{% if s %}-12 mt-2{% endif %}">
+                                    </div>
+                                {% endif %}
+                                {% if s %}
+                                    <div class="col-12 pl-0">
+                                        <p class="mb-0">Size:</p>
+                                        <select class="form-control rounded-0 w-50" name="product_size"
+                                            id='id_product_size'>
+                                            <option value="heavy">4/4</option>
+                                            <option value="medium" selected>3/4</option>
+                                            <option value="light">1/2</option>
+                                            <option value="extra-light">1/4</option>
+                                        </select>
+                                    </div>
+                                    {% endif %}
+                        <div class="col{% if sg or s %}-12 mt-2{% endif %}">
                             <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-5">
                                 <span class="icon">
                                     <i class="fas fa-chevron-left"></i>
