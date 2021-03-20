@@ -75,7 +75,7 @@
                         
                         <div class="form-group">
                             <label>Size</label>
-                            {% with product.string_gauge as sg product.has_sizes as s %}
+                            {% with product.string_gauge as sg %}
                                     {% if sg %}
                                     <div class="col-12">
                                         <p><strong>String Gauge:</strong></p>
@@ -87,6 +87,7 @@
                                         </select>
                                     </div>
                                 {% endif %}
+                                {% with product.has_sizes as s %}
                                 {% if s %}
                                     <div class="col-12 pl-0">
                                         <p class="mb-0">Size:</p>
@@ -109,6 +110,7 @@
                             <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Bag">
                         </div>
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                        {% endwith %}
                         {% endwith %}
                     </div>
                     </form>
