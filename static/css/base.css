@@ -11,6 +11,13 @@ body {
     color: #fff;
 }
 
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 999999999;
+}
+
 .shop-now-button {
     border: none;
     border-radius: 2px;
