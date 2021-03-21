@@ -154,6 +154,20 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+.bag-notification-wrapper {
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
 /*--MEDIA QUERIES--*/
 
 @media screen and (max-width: 600px) {

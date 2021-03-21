@@ -25,7 +25,7 @@ def add_to_cart(request, item_id):
                 messages.success(request,
                                  (f'Updated size {size.upper()} '
                                   f'{product.name} quantity to '
-                                  f'{bag[item_id]["items_by_size"][size]}'))
+                                  f'{cart[item_id]["items_by_size"][size]}'))
             else:
                 cart[item_id]['items_by_size'][size] = quantity
                 messages.success(request,
