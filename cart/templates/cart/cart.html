@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load cart_tools %}
 
 
 {% block page_header %}
@@ -40,6 +41,7 @@
                                 alt="Product"></a>
                         <div class="media-body pt-3">
                             <h3 class="product-card-title font-weight-semibold border-0 pb-0">{{ item.product.name }}</h3>
+                            <div class="font-size-sm"><span class="text-muted mr-2">Size:</span>{% if item.product.has_size %}{{ item.size|upper }}{% else %}N/A{% endif %}</div>
                             <div class="font-size-sm"><span class="text-muted mr-2">String Gauge:</span>{% if item.product.string_gauge %}{{ item.size|upper }}{% else %}N/A{% endif %}</div>
                             <!--<div class="font-size-sm"><span class="text-muted mr-2">Color:</span>Black</div>-->
                             <div class="font-size-lg text-primary pt-2">€{{ item.product.price }}</div>
@@ -73,6 +75,9 @@
                                             </button>
                                         </div>
                                         {% if item.product.string_gauge %}
+                                        <input type="hidden" name="product_size" value="{{ item.size }}">
+                                        {% endif %}
+                                        {% if item.product.has_size %}
                                         <input type="hidden" name="product_size" value="{{ item.size }}">
                                         {% endif %}
                                     </div>
@@ -109,7 +114,7 @@
             {% for item in cart_items %}
             <div class="col-xl-3 col-md-4 pt-3 pt-md-0">
                 <h2 class="h6 px-4 py-1 bg-secondary text-center">Subtotal</h2>
-                <div class="h3 text-center py-1">500</div>
+                <div class="h3 text-center py-1">{{ item.product.price | calc_subtotal:item.quantity }}</div>
                 <hr>
                 <td colspan="5" class="pt-5 text-right">
                     <h6><strong>Cart Total: €{{ total|floatformat:2 }}</strong></h6>
@@ -129,7 +134,7 @@
                         </span>
                         <span class="text-uppercase">Keep Shopping</span>
                     </a>
-                    <a href="{% url 'checkout' %}" class="btn btn-black rounded-0 btn-lg">
+                    <a href="#" class="btn btn-black rounded-0 btn-lg">
                         <span class="text-uppercase">Secure Checkout</span>
                         <span class="icon">
                             <i class="fas fa-lock"></i>
@@ -142,7 +147,7 @@
         </div>
     </div>
 </div>
-    
+    {% else %}
     <p class="lead mb-5">Your shopping cart is empty.</p>
     <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
     <span class="icon">
@@ -159,21 +164,21 @@
 
 {% block postloadjs %}
 {{ block.super }}
-{% include 'products/includes/quantity_input_script.html' %}
 
 <script type="text/javascript">
     // Update quantity on click
     $('.update-link').click(function (e) {
         var form = $(this).prev('.update-form');
         form.submit();
-    })
+    });
+    
 
     // Remove item and reload on click
     $('.remove-item').click(function (e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
         var size = $(this).data('size');
-        var url = `/bag/remove/${itemId}/`;
+        var url = `/cart/remove/${itemId}/`;
         var data = { 'csrfmiddlewaretoken': csrfToken, 'product_size': size };
 
         $.post(url, data)
