@@ -114,6 +114,9 @@ body {
     object-fit: cover;
 }
 
+.pro-img-details img {
+    width: 80%;
+}
 .caption {
     width: 100%;
     max-width: 100%;
