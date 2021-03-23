@@ -291,6 +291,15 @@ body {
 .h6 {
     background-color: #878d9c;
 }
+
+
+.dropdown-menu {
+    background: #fafafa;
+}
+
+.dropdown-item:hover {
+    background: #17a2b8;
+}
 /*--MEDIA QUERIES--*/
 
 @media screen and (max-width: 600px) {

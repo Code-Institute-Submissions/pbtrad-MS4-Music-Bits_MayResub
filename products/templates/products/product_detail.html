@@ -29,17 +29,11 @@
                     
                     </div>
                     <div class="col-md-6 mt-4">
-                        <h4 class="pro-d-title">
-                            <a href="#" class="text-white">
+                        <h4 class="pro-d-title text-white">
                                 {{ product.name }}
-                      </a>
                         </h4>
                         <p>
                             {{ product.description }}                            </p>
-                        <!--<div class="product_meta">
-                            <span class="posted_in"> <strong>Categories:</strong> <a rel="tag" href="#">Jackets</a>, <a rel="tag" href="#">Men</a>, <a rel="tag" href="#">Shirts</a>, <a rel="tag" href="#">T-shirt</a>.</span>
-
-                        </div>-->
                         {% if product.rating %}
             <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
             {% else %}
