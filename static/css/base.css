@@ -247,6 +247,37 @@ body {
     border-radius: 0;
 }
 
+.ripple {
+    background-position: center;
+    transition: background 0.8s;
+    color: white;
+    background-color: #17a2b8;
+    box-shadow: 0 0 4px #000;
+
+}
+
+.ripple:hover {
+    background: #f09162 radial-gradient(circle, transparent 1%, #f09162 1%) center/15000%;
+}
+
+.ripple:active {
+    background-color: #6eb9f7;
+    background-size: 100%;
+    transition: background 0s;
+}
+
+.empty-cart-info {
+    position: absolute;
+    left: 300px;
+}
+
+.cart-item-header {
+    background-color: #878d9c;
+}
+
+.h6 {
+    background-color: #878d9c;
+}
 /*--MEDIA QUERIES--*/
 
 @media screen and (max-width: 600px) {
@@ -269,6 +300,14 @@ body {
     .container-search {
         margin-right: 1.6rem;
         transform: translate(-20%);
+    }
+    .empty-cart-info {
+        position: static;
+        
+    }
+    .container-search {
+        position: relative;
+        left: 20px;
     }
 }
 
