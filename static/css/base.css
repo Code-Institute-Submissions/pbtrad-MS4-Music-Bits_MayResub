@@ -300,6 +300,8 @@ body {
 .dropdown-item:hover {
     background: #17a2b8;
 }
+
+
 /*--MEDIA QUERIES--*/
 
 @media screen and (max-width: 600px) {
