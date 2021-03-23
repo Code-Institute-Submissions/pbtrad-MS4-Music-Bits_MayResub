@@ -21,7 +21,7 @@ body {
 .shop-now-button {
     border: none;
     border-radius: 2px;
-    padding: 12px 18px;
+    padding: 60px 80px;
     font-size: 16px;
     text-transform: uppercase;
     cursor: pointer;
@@ -30,6 +30,8 @@ body {
     box-shadow: 0 0 4px #000;
     outline: none;
 }
+
+
 
 .overlay {
     height: 100%;
@@ -102,6 +104,14 @@ body {
 
 .caption-container {
     padding-top: 5rem;
+}
+
+.card-title {
+    font-size: 1vw;
+}
+
+.embed-responsive .card-img-top {
+    object-fit: cover;
 }
 
 .caption {
