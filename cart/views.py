@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 
 from django.contrib import messages
-
+from coupons.models import Coupon
 from products.models import Product
+from coupons.forms import CouponApplyForm
+
 
 
 def view_cart(request):
@@ -14,6 +16,8 @@ def add_to_cart(request, item_id):
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     size = None
+    coupon_apply_form = CouponApplyForm()
+    coupon_id = request.session.get('coupon_id')
     if 'product_size' in request.POST:
         size = request.POST['product_size']
     cart = request.session.get('cart', {})
@@ -113,3 +117,20 @@ def remove_from_cart(request, item_id):
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)
+
+
+
+@property
+def coupon(self):
+    if self.coupon_id:
+        return Coupon.objects.get(id=self.coupon_id)
+    return None
+
+
+def get_discount(self):
+    if self.coupon:
+        return (self.coupon.discount /Decimal('100')) * self.grand_total
+
+
+def get_total_price_after_discount(self):
+    return self.grand_total - self.get_discount()

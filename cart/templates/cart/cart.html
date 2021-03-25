@@ -24,9 +24,10 @@
         </div>
         <div class="row">
             <div class="col-xl-9 col-md-8">
-                {% if cart_items %}
+        {% if cart_items %}
                 <h2 class="h6 d-flex flex-wrap justify-content-between align-items-center px-4 py-3">
-                    <span>Product</span><a class="font-size-sm text-white" href="{% url 'products' %}">Continue shopping</a>
+                    <span>Product</span><a class="font-size-sm text-white" href="{% url 'products' %}">Continue
+                        shopping</a>
                 </h2>
                 <!-- Item-->
                 {% for item in cart_items %}
@@ -35,12 +36,13 @@
                         {% if item.product.image %}
                         <a class="cart-item-thumb mx-auto mr-sm-4" href="#"><img src="{{ item.product.image.url }}"
                                 alt="{{ item.product.name }}"></a>
-                                {% else %}
-                                <a class="cart-item-thumb mx-auto mr-sm-4" href="#"><img src="{{ MEDIA_URL }}noimage.png"
-                                    alt="{{ item.product.name }}"></a>
+                        {% else %}
+                        <a class="cart-item-thumb mx-auto mr-sm-4" href="#"><img src="{{ MEDIA_URL }}noimage.png"
+                                alt="{{ item.product.name }}"></a>
                         {% endif %}
                         <div class="media-body pt-3">
-                            <h3 class="product-card-title font-weight-semibold border-0 pb-0">{{ item.product.name }}</h3>
+                            <h3 class="product-card-title font-weight-semibold border-0 pb-0">{{ item.product.name }}
+                            </h3>
                             <div class="font-size-sm"><span class="text-muted mr-2">Size:</span>{% if item.product.has_size %}{{ item.size|upper }}{% else %}N/A{% endif %}</div>
                             <div class="font-size-sm"><span class="text-muted mr-2">String Gauge:</span>{% if item.product.string_gauge %}{{ item.size|upper }}{% else %}N/A{% endif %}</div>
                             <!--<div class="font-size-sm"><span class="text-muted mr-2">Color:</span>Black</div>-->
@@ -89,10 +91,11 @@
                                     <i class="far fa-trash-alt"></i>
                                     Remove</button>
                             </form>
-                            <h2 class="h6 px-4 py-1 text-center">Subtotal</h2>
-                <div class="h3 text-center py-1">{{ item.product.price | calc_subtotal:item.quantity }}</div>
+                            <p class="pt-5 py-1 text-center"><u>Subtotal</u></p>
+                            <div class="h3 text-center py-1">{{ item.product.price | calc_subtotal:item.quantity }}
+                            </div>
                         </div>
-                        
+
                     </div>
                 </div>
                 {% endfor %}
@@ -104,17 +107,27 @@
                 <td colspan="5" class="pt-5 text-right">
                     <h6><strong>Cart Total: €{{ total|floatformat:2 }}</strong></h6>
                     <h6>Delivery: €{{ delivery|floatformat:2 }}</h6>
-                   
-                <hr>
+                    {% if cart.coupon %}
+                    <td>"{{ cart.coupon.code }}" coupon ({{ discount }}% off)</td>
+                    <td colspan="4"></td>
+                    <td class="num reg">- €{{ cart.get.discount|floatformat:2 }}</td>
+                    {% endif %}
+                    <hr>
                     <h4 class="mt-4"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></h4>
                     {% if free_delivery_delta > 0 %}
                     <p class="mb-1 text-danger">
                         You could get free delivery by spending just <strong>€{{ free_delivery_delta }}</strong>
                         more!
                     </p>
-                    {% endif %}
+                {% endif %}
                 </td>
                 
+                <form action="{% url 'coupon_apply' %}" method="POST">
+                    {{ coupon_apply_form }}
+                    <input type="submit" value="Apply" class="btn ripple">
+                    {% csrf_token %}
+                </form>
+
                 <td colspan="5" class="text-right">
                     <a href="{% url 'products' %}" class="btn ripple btn-lg mt-4 mb-3">
                         <span class="icon">
@@ -129,25 +142,25 @@
                         </span>
                     </a>
                 </td>
-</div>
             </div>
-            
-            {% else %}
-    <div class="empty-cart-info mx-auto">
-    <p class="lead mb-5">Your shopping cart is empty.</p>
-    <a href="{% url 'products' %}" class="btn ripple btn-lg mt-5">
-    <span class="icon">
-        <i class="fas fa-arrow-circle-left"></i>
-    </span>
-    <span class="text-uppercase">Keep Shopping</span>
-    </a>
-    </div>
-    {% endif %}
         </div>
+
+        {% else %}
+        <div class="empty-cart-info mx-auto">
+            <p class="lead mb-5">Your shopping cart is empty.</p>
+            <a href="{% url 'products' %}" class="btn ripple btn-lg mt-5">
+                <span class="icon">
+                    <i class="fas fa-arrow-circle-left"></i>
+                </span>
+                <span class="text-uppercase">Keep Shopping</span>
+            </a>
+        </div>
+        {% endif %}
     </div>
-    
 </div>
-    
+
+</div>
+
 
 
 
@@ -163,7 +176,7 @@
         var form = $(this).prev('.update-form');
         form.submit();
     });
-    
+
 
     // Remove item and reload on click
     $('.remove-item').click(function (e) {
