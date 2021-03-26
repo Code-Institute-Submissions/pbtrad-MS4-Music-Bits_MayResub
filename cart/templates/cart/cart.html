@@ -43,7 +43,7 @@
                         <div class="media-body pt-3">
                             <h3 class="product-card-title font-weight-semibold border-0 pb-0">{{ item.product.name }}
                             </h3>
-                            <div class="font-size-sm"><span class="text-muted mr-2">Size:</span>{% if item.product.has_size %}{{ item.size|upper }}{% else %}N/A{% endif %}</div>
+                            <div class="font-size-sm"><span class="text-muted mr-2">Size:</span>{% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</div>
                             <div class="font-size-sm"><span class="text-muted mr-2">String Gauge:</span>{% if item.product.string_gauge %}{{ item.size|upper }}{% else %}N/A{% endif %}</div>
                             <!--<div class="font-size-sm"><span class="text-muted mr-2">Color:</span>Black</div>-->
                             <div class="font-size-lg text-primary pt-2">€{{ item.product.price }}</div>
@@ -57,40 +57,21 @@
                                 {% csrf_token %}
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <!--<div class="input-group-prepend">
-                                            <button class="decrement-qty btn btn-sm btn-black rounded-0"
-                                                data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
-                                                <span>
-                                                    <i class="fas fa-minus fa-sm"></i>
-                                                </span>
-                                            </button>
-                                        </div>-->
                                         <input class="form-control form-control-sm qty_input" type="number"
                                             name="quantity" value="{{ item.quantity }}" min="1" max="99"
                                             data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
-                                        <!--<div class="input-group-append">
-                                            <button class="increment-qty btn btn-sm btn-black rounded-0"
-                                                data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
-                                                <span>
-                                                    <i class="fas fa-plus fa-sm"></i>
-                                                </span>
-                                            </button>
-                                        </div>-->
                                         {% if item.product.string_gauge %}
                                         <input type="hidden" name="product_size" value="{{ item.size }}">
                                         {% endif %}
-                                        {% if item.product.has_size %}
+                                        {% if item.product.has_sizes %}
                                         <input type="hidden" name="product_size" value="{{ item.size }}">
                                         {% endif %}
                                     </div>
                                 </div>
-                                <button class="update-link btn btn-secondary btn-sm btn-block mb-2" type="button">
-                                    <i class="fas fa-sync-alt"></i>Update cart</button>
-                                <button class="remove-item btn btn-danger btn-sm btn-block mb-2"
-                                    id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}" type="button">
-                                    <i class="far fa-trash-alt"></i>
-                                    Remove</button>
                             </form>
+                            <a class="update-link text-info"><small>Update</small></a>
+                            <a class="remove-item text-danger" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}"><small>Remove</small></a>
+                            
                             <p class="pt-5 py-1 text-center"><u>Subtotal</u></p>
                             <div class="h3 text-center py-1">{{ item.product.price | calc_subtotal:item.quantity }}
                             </div>
@@ -117,7 +98,7 @@
                     </p>
                 {% endif %}
                 </td>
-                <button id="submit_code" class="btn ripple btn-sm text-uppercase">Enter  Discount  Code</button>
+                <button id="submit_code" class="btn btn-sm text-uppercase">Enter  Discount  Code</button>
                             <form id="coupon_form" action="{% url 'apply' %}" method="post">
                                 {% csrf_token %}
                                 {{ coupon_form|crispy }}
@@ -154,7 +135,6 @@
     </div>
 </div>
 
-</div>
 
 
 
@@ -185,6 +165,6 @@
             .done(function () {
                 location.reload();
             });
-    })
+    });
 </script>
 {% endblock %}
