@@ -1,21 +1,29 @@
-from django.shortcuts import render
-from .forms import CouponApplyForm
-from django.views.decorators.http import require_POST
-import datetime
-from django.utils import timezone
+from django.shortcuts import render, redirect, reverse
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from .forms import CouponForm
 
-@require_POST
-def coupon_apply(request):
-    now = timezone.now()
-    form = CouponApplyForm(request.POST)
-    if form.is_valid():
-        code = form.cleaned_data['code']
-        try:
-            coupon = Coupon.objects.get(code_iexact=code,
-                                    valid_from__lte=now,
-                                    valid_to__gte=now,
-                                    active=True)
-            request.session['coupon_id'] = coupon.id
-        except Coupon.DoesNotExist:
-            request.session['coupon_id'] = None
-        return redirect('cart')
+
+@login_required
+def add_coupon(request):
+    """ Add a coupon to the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+    if request.method == 'POST':
+        form = CouponForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added coupon!')
+            return redirect(reverse('add_coupon'))
+        else:
+            messages.error(request, 'Failed to add coupon. Please ensure the form is valid.')
+    else:
+        form = CouponForm(initial={'active': True})
+
+    template = 'coupons/add_coupon.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)

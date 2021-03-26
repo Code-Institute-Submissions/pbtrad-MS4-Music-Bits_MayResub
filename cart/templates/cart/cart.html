@@ -99,19 +99,15 @@
                     </div>
                 </div>
                 {% endfor %}
-                <!-- Item-->
             </div>
-            <!-- Sidebar-->
             <div class="col-xl-3 col-md-4 pt-3 pt-md-0">
-                
                 <td colspan="5" class="pt-5 text-right">
                     <h6><strong>Cart Total: €{{ total|floatformat:2 }}</strong></h6>
                     <h6>Delivery: €{{ delivery|floatformat:2 }}</h6>
-                    {% if cart.coupon %}
-                    <td>"{{ cart.coupon.code }}" coupon ({{ discount }}% off)</td>
-                    <td colspan="4"></td>
-                    <td class="num reg">- €{{ cart.get.discount|floatformat:2 }}</td>
-                    {% endif %}
+                    
+                    <h6><strong>Discount Coupon id: {% if code %} {{ code }} {% else %} Not Added {% endif %}</strong></h6>
+                                    <h6><strong>Discount Applied: {% if code %} ({{ discount_percentage }}%) / €{{ discount_total|floatformat:2 }} {% else %} Zero {% endif %}</strong></h6>
+                
                     <hr>
                     <h4 class="mt-4"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></h4>
                     {% if free_delivery_delta > 0 %}
@@ -121,13 +117,12 @@
                     </p>
                 {% endif %}
                 </td>
-                
-                <form action="{% url 'coupon_apply' %}" method="POST">
-                    {{ coupon_apply_form }}
-                    <input type="submit" value="Apply" class="btn ripple">
-                    {% csrf_token %}
-                </form>
-
+                <button id="submit_code" class="btn ripple btn-sm text-uppercase">Enter  Discount  Code</button>
+                            <form id="coupon_form" action="{% url 'apply' %}" method="post">
+                                {% csrf_token %}
+                                {{ coupon_form|crispy }}
+                                <input type="submit" class="btn ripple btn-lg text-uppercase" value="Submit  code">
+                            </form>
                 <td colspan="5" class="text-right">
                     <a href="{% url 'products' %}" class="btn ripple btn-lg mt-4 mb-3">
                         <span class="icon">
