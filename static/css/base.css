@@ -102,6 +102,10 @@ body {
     }
 }
 
+.text-muted {
+    color: #b4bdcc;
+}
+
 .caption-container {
     padding-top: 5rem;
 }
@@ -413,5 +417,13 @@ body {
     border-radius: 5px;
     background: white;
     transform: rotate(45deg) translate(26px, -2px);
+}
+
+textarea {
+    width: 80%;
+}
+
+.review-card {
+    width: 50%;
 }
 
