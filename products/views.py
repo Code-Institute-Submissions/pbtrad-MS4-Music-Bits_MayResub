@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
-from django.db.models import Q
+from django.db.models import Q, Avg
 from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .models import Product, Category, Review
+from .models import Product, Category, Review, Rating
 from .forms import ProductForm, RateForm
 from django.http import HttpResponse, HttpResponseRedirect
 
@@ -67,9 +67,15 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
+    reviews = Review.objects.filter(pk=product_id)
+    reviews_avg = reviews.aggregate(Avg('rate'))
+    reviews_count = reviews.count()
 
     context = {
         'product': product,
+        'reviews': reviews,
+        'reviews_avg': reviews_avg,
+        'reviews_count': reviews_count,
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -148,25 +154,25 @@ def delete_product(request, product_id):
 
 
 def Rate(request, product_id):
-	product = get_object_or_404(Product, pk=product_id)
-	user = request.user
+    product = get_object_or_404(Product, pk=product_id)
+    user = request.user
 
-	if request.method == 'POST':
-		form = RateForm(request.POST)
-		if form.is_valid():
-			rate = form.save(commit=False)
-			rate.user = user
-			rate.product = product
-			rate.save()
-			return redirect(reverse('product_detail', args=[product.id]))
-	else:
-		form = RateForm()
+    if request.method == 'POST':
+        form = RateForm(request.POST)
+        if form.is_valid():
+            rate = form.save(commit=False)
+            rate.user = user
+            rate.product = product
+            rate.save()
+            return redirect(reverse('product_detail', args=[product.id]))
+    else:
+        form = RateForm()
 
-	template = 'products/rate.html'
+    template = 'products/rate.html'
 
-	context = {
-		'form': form, 
-		'product': product,
-	}
+    context = {
+        'form': form,
+        'product': product,
+    }
 
-	return render(request, template, context)
+    return render(request, template, context)

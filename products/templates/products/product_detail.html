@@ -26,17 +26,20 @@
                             {% endif %}
                         </div>
                         
-                            
-                              <div class="card mt-5 w-100">
+                        {% for review in reviews %}
+                              <div class="review-card card mt-5 mb-5">
                                 <div class="card-content">
                                   <span class="card-title text-dark"><b>{{ review.user }}</b><span class="">Review</span></span>
                                   <p class="text-dark">@{{ review.user.username }}</p>
                                   <p class="text-dark"><b>{{ review.date }}</b></p>
-                                  <br class="text-dark">
+                                  <div class="text-dark review-text">
                                   {{ review.text }}
+                                  </div>
                                 </div>
-                              
+                                <h5 class="text-dark">{{ review.rate }} / 5</h5>
                             </div>
+                        {% endfor %}
+                        <p><b>{{ reviews_avg.rate__avg }}</b> by <b>{{ reviews_count }}</b> people </p>
                           
                     </div>
                     <div class="col-md-6 mt-4">

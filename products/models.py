@@ -53,5 +53,11 @@ class Review(models.Model):
     text = models.TextField(max_length=3000, blank=True)
     rate = models.PositiveSmallIntegerField(choices=RATE_CHOICES)
 
+
     def __str__(self):
         return self.user.username
+
+
+class Rating(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    review = models.ForeignKey(Review, on_delete=models.CASCADE)
