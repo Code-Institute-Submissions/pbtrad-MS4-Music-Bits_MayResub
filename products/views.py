@@ -3,8 +3,10 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
-from .models import Product, Category
-from .forms import ProductForm
+from django.contrib.auth.models import User
+from .models import Product, Category, Review
+from .forms import ProductForm, RateForm
+from django.http import HttpResponse, HttpResponseRedirect
 
 # Create your views here.
 
@@ -143,3 +145,28 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+
+def Rate(request, product_id):
+	product = get_object_or_404(Product, pk=product_id)
+	user = request.user
+
+	if request.method == 'POST':
+		form = RateForm(request.POST)
+		if form.is_valid():
+			rate = form.save(commit=False)
+			rate.user = user
+			rate.product = product
+			rate.save()
+			return redirect(reverse('product_detail', args=[product.id]))
+	else:
+		form = RateForm()
+
+	template = 'products/rate.html'
+
+	context = {
+		'form': form, 
+		'product': product,
+	}
+
+	return render(request, template, context)

@@ -43,6 +43,7 @@
                         <small class="ml-3">
                             <a href="{% url 'edit_product' product.id %}">Edit</a>
                             <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                            <a href="{% url 'rate_product' product.id %}" class="text-warning"><i class="fas fa-star"></i>Rate</a>
                         </small>
                         {% endif %}
                         <div class="m-bot15"> <strong>Price : </strong><span class="pro-price"> €{{ product.price }}</span></div>

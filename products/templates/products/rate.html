@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <hr>
+                <h2 class="logo-font mb-4">Product Management</h2>
+                <h5 class="text-muted">Review a Product</h5>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col s12 m12">
+              <div class="card horizontal">
+                <div class="card-image mx-auto">
+                  <img src="{{ product.image.url }}">
+                </div>
+                <div class="card-stacked">
+                  <div class="card-content">
+                    <span class="card-title"><b>{{ product.name }}</b></span>
+                    <span>{{ product.category }}</span>
+                    <div class="divider"></div>
+                    <br>
+                    <form method="post" action="" role="form" class="col s12">
+                      {% csrf_token %}
+                     <div class="input-field col s12 text-dark">
+                        {{ form.rate }}
+                    </div>
+                    <div class="input-field col s12">
+                        {{ form.text }}
+                      <label for="textarea1" class="text-dark">Review</label>
+                    </div>
+      
+                    <button type="submit" name="action" class="btn btn-sm ripple"><i class="fas fa-star"></i>Rate</button>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+            </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $('#new-image').change(function() {
+            var file = $('#new-image')[0].files[0];
+            $('#filename').text(`Image will be set to: ${file.name}`);
+        });
+    </script>
+{% endblock %}
