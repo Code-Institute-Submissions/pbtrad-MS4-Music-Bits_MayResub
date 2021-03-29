@@ -112,7 +112,9 @@ body {
     padding-top: 5rem;
 }
 
-
+.card-body h4 {
+    font-size: larger;
+}
 
 .embed-responsive .card-img-top {
     object-fit: cover;
