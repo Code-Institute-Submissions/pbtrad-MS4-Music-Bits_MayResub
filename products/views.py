@@ -165,6 +165,7 @@ def Rate(request, product_id):
             rate.user = user
             rate.product = product
             rate.save()
+            messages.success(request, 'Product rated!')
             return redirect(reverse('product_detail', args=[product.id]))
     else:
         form = RateForm()
