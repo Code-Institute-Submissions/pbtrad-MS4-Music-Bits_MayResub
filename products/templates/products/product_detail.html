@@ -25,22 +25,6 @@
                             </a>
                             {% endif %}
                         </div>
-                        
-                        {% for review in reviews %}
-                              <div class="review-card card mt-5 mb-5">
-                                <div class="card-content">
-                                  <span class="card-title text-dark"><b>{{ review.user }}</b><span class="">Review</span></span>
-                                  <p class="text-dark">@{{ review.user.username }}</p>
-                                  <p class="text-dark"><b>{{ review.date }}</b></p>
-                                  <div class="text-dark review-text">
-                                  {{ review.text }}
-                                  </div>
-                                </div>
-                                <h5 class="text-dark">{{ review.rate }} / 5</h5>
-                            </div>
-                        {% endfor %}
-                        <p><b>{{ reviews_avg.rate__avg }}</b> by <b>{{ reviews_count }}</b> people </p>
-                          
                     </div>
                     <div class="col-md-6 mt-4">
                         <h4 class="pro-d-title text-white">
@@ -57,7 +41,8 @@
                         <small class="ml-3">
                             <a href="{% url 'edit_product' product.id %}">Edit</a>
                             <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
-                            <a href="{% url 'rate_product' product.id %}" class="text-warning"><i class="fas fa-star"></i>Rate</a>
+                            <a href="{% url 'rate_product' product.id %}" class="text-warning"><i
+                                    class="fas fa-star"></i>Rate</a>
                         </small>
                         {% endif %}
                         <div class="m-bot15"> <strong>Price : </strong><span class="pro-price"> €{{ product.price }}</span></div>
@@ -112,7 +97,7 @@
                                         <a href="{% url 'view_cart' %}" class="btn ripple mt-5">
                                             <span class="text-uppercase">Cart</span>
                                             <span class="icon">
-                                                <i class="fas fa-lock"></i>
+                                                <i class="fas fa-shopping-cart"></i>
                                             </span>
                                         </a>
                                     </div>
@@ -124,6 +109,22 @@
                         </form>
                     </div>
                 </div>
+
+                
+                <div class="review-card mt-5 mb-5 bg-transparent border border-dark w-100 text-center">
+                    <p class="">{{ product.name }}</p>
+                    {% for review in reviews %}
+                    <p class="mt-1 pt-3"><b>Review</b></p>
+                    <hr>
+                    <span class="card-title"><b>by {{ review.user }}</b></span>
+                    <p class=""><b>{{ review.date }}</b></p>
+                    <div class="review-text">
+                        {{ review.text }}
+                    </div>
+                    <h5 class="">{{ review.rate }} / 5</h5>
+                </div>
+                    {% endfor %}
+                <p class="mb-5"><b>{{ reviews_avg.rate__avg }}</b> by <b>{{ reviews_count }}</b> users </p>
             </div>
         </section>
     </div>
