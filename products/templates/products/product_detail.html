@@ -32,11 +32,8 @@
                         </h4>
                         <p>
                             {{ product.description }} </p>
-                        {% if product.rating %}
-                        <small class="text-white"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
-                        {% else %}
-                        <small class="text-white">No Rating</small>
-                        {% endif %}
+                        
+                        <small class="text-white"><i class="fas fa-star mr-1"></i>{{ reviews_avg.rate__avg |floatformat:1 }}</small>
                         {% if request.user.is_superuser %}
                         <small class="ml-3">
                             <a href="{% url 'edit_product' product.id %}">Edit</a>
@@ -110,11 +107,11 @@
                     </div>
                 </div>
 
-                
+                {% for review in reviews %}
                 <div class="review-card mt-5 mb-5 bg-transparent border border-dark w-100 text-center">
                     <p class="">{{ product.name }}</p>
-                    {% for review in reviews %}
-                    <p class="mt-1 pt-3"><b>Review</b></p>
+                    <p class="">Rated <b>{{ reviews_avg.rate__avg |floatformat:1 }}</b> by <b>{{ reviews_count }}</b> users </p>
+                    <p class=""><b>Review</b></p>
                     <hr>
                     <span class="card-title"><b>by {{ review.user }}</b></span>
                     <p class=""><b>{{ review.date }}</b></p>
@@ -124,7 +121,7 @@
                     <h5 class="">{{ review.rate }} / 5</h5>
                 </div>
                     {% endfor %}
-                <p class="mb-5"><b>{{ reviews_avg.rate__avg }}</b> by <b>{{ reviews_count }}</b> users </p>
+                
             </div>
         </section>
     </div>
