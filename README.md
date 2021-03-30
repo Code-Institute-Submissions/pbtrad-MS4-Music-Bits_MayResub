@@ -1,4 +1,5 @@
 # Music-Bits
+![pic](https://github.com/pbtrad/MS4-Music-Bits/blob/master/Large-img-landing-page.png)
 
 Welcome to [Music Bits](https://pbtrad-music-bits.herokuapp.com/) - an e-commerce website selling musical instruments adn accessories, providing expertise and choice through a satisfying shopping experience.
 
@@ -330,6 +331,9 @@ Reviews:
   * Small: Galaxy 9 and iphone 6 
   
   Any major cross-device issues have been dealt with through media queries in css.
+  
+  ![med](https://github.com/pbtrad/MS4-Music-Bits/blob/master/med-img-landing-page.png)
+  ![mobile](https://github.com/pbtrad/MS4-Music-Bits/blob/master/small-img-landing-page.png)
   
 **Validators**
 
