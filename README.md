@@ -463,8 +463,9 @@ python3 app.py
 
 ## Acknowledgements:
 
- * Code Institute tutors Jo, Cormac, Igor, Tim, Johann, Sheryl, Michael, Alan, Kevin.
+ * Code Institute tutors Jo, Cormac, Igor, Tim, Johann, Sheryl, Michael, Alan, Kevin and those whom I forgot.
  * Adegbenga Adeye for mentoring support throughout the course.
+ * Everyone at Code Institute for great support throughout the past year.
 
 
 
