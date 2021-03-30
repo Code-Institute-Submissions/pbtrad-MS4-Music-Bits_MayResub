@@ -437,7 +437,7 @@ python3 app.py
  * DO NOT commit with Heroku database settings visible change database back to original database URL before commit.
  * Insall gunicorn and freeze requirements.
  * Create our Procfile that creates a web dyno in Heroku.
- * Temporarilly disable collect static by entering heroku config:set DISAABLE_COLLECTSTATIC = 1 --bright-ideas-bm.
+ * Temporarilly disable collect static by entering heroku config:set DISABLE_COLLECTSTATIC = 1 --<project name>.
  * Add Host name of heroku app to allowed settings.py, allow local host also to access from your IDE.
  * To push to heroku you may need to initialise your heroku git remote heroku git:remote -a <project name>.
  * Then push to heroku git push heroku master.
