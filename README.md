@@ -447,7 +447,20 @@ python3 app.py
  * Go to settings.py remove secret key and replace with a call to get it from the environment *SECRET_KEY = os.environ.get('SECRET_KEY', '')
  * Set debug to be True only if there is a variable called development in the environment DEBUG = 'DEVELOPMENT' in os.environ.
 
-## Credits & Acknowledgments
+## Credits
+
+* [ckz8780](https://github.com/ckz8780/boutique_ado_v1) as the entire website is built upon the boutique ado tutorial.
+* [https://codepen.io/rosemaryly/pen/OJbyjdE] for the animated search icon.
+* [Packt Video](https://www.youtube.com/watch?v=_dSCGMJcoe4&ab_channel=PacktVideo) for the basis of the Coupons app.
+* [Lara Code](https://www.youtube.com/channel/UClXcbBNNhFU9ATAcXB6U7eQ) for the basis of the review and rating system.
+* [Bootdey](https://www.bootdey.com/) for various code snippets.
+* [Mdbootstrap](https://mdbootstrap.com/) for footer.
+* Images and data scraped from [Goodwins](https://www.goodwinsmusic.ie/) and [Waltons](https://www.waltons.ie/) using [parsehub](https://parsehub.com/).
+
+## Acknowledgements:
+
+ * Code Institute tutors Jo, Cormac, Igor, Tim, Johann, Sheryl, Michael, Alan, Kevin.
+ * Adegbenga Adeye for mentoring support throughout the course.
 
 
 
