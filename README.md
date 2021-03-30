@@ -372,6 +372,8 @@ Reviews:
 
 ## Deployment
 
+**Local Deployment**
+
 1. Basic requirements for deployment:
    * Python3 to run the application.
    * PIP to install app requirements.
@@ -406,7 +408,48 @@ Reviews:
 * `os.environ.setdefault('AWS_ACCESS_KEY_ID', '')`
 * `os.environ.setdefault('AWS_SECRET_ACCESS_KEY', '')`
 * `os.environ.setdefault('DATABASE_URL', '')`
-   
+
+7. Add env to .gitignore file to avoid any sensitive data being pushed to github.
+8. Type into terminal to migrate
+```
+python3 manage.py migrate
+```
+9. Type into terminal to run
+```
+python3 app.py
+```
+
+**Deployng to Heroku**
+ 
+ * Sign up and login to Heroku.
+ * Once logged in select 'create new app'.
+ * Name app and select region.
+ * Create app
+ * In resources and add Heroku Postgres Database.
+ * Go back to your IDE and install dj-database-url and psycopg2-binary.
+ * Run pip3 freeze > requirements.txt.
+ * Set up database by going to settings.py and import dj-database-url
+ * In settings.py navigate to database settings and replace default database with a call to dj_database_url.parse().
+ * Add database URL found in Heroku settings config vars.
+ * Run python3 manage.py migrate .
+ * If uploading data using json fixtures you can enter python3 manage.py loaddata <fixture name>.
+ * Add superuser to log in with python3 manage.py createsuperuser.
+ * DO NOT commit with Heroku database settings visible change database back to original database URL before commit.
+ * Insall gunicorn and freeze requirements.
+ * Create our Procfile that creates a web dyno in Heroku.
+ * Temporarilly disable collect static by entering heroku config:set DISAABLE_COLLECTSTATIC = 1 --bright-ideas-bm.
+ * Add Host name of heroku app to allowed settings.py, allow local host also to access from your IDE.
+ * To push to heroku you may need to initialise your heroku git remote heroku git:remote -a <project name>.
+ * Then push to heroku git push heroku master.
+ * In Heroku app go to deploy tab and select github to link Heroku and whatever is pushed to github.
+ * Enable automatic deploys.
+ * Get secret key and add to heroku config settings.
+ * Go to settings.py remove secret key and replace with a call to get it from the environment *SECRET_KEY = os.environ.get('SECRET_KEY', '')
+ * Set debug to be True only if there is a variable called development in the environment DEBUG = 'DEVELOPMENT' in os.environ.
+
+## Credits & Acknowledgments
+
+
 
 
 
