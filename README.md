@@ -395,12 +395,20 @@ Reviews:
    ```
    pip3 -r requirements.txt
    ```
+6. Run a PostgresSQL database.
+* `os.environ.setdefault('SECRET_KEY', '')`
+* `os.environ.setdefault('STRIPE_PUBLIC_KEY', '')`
+* `os.environ.setdefault('STRIPE_SECRET_KEY', '')`
+* `os.environ.setdefault('STRIPE_WH_SECRET', '')`
+* `os.environ.setdefault('EMAIL_HOST_USER', '')`
+* `os.environ.setdefault('EMAIL_HOST_PASS', '')`
+* `os.environ.setdefault('EMAIL_HOST_USER', '')`
+* `os.environ.setdefault('AWS_ACCESS_KEY_ID', '')`
+* `os.environ.setdefault('AWS_SECRET_ACCESS_KEY', '')`
+* `os.environ.setdefault('DATABASE_URL', '')`
+   
 
-6. In your IDE create a file where all secret information can go eg: SECRET_KEY
-7. Type into your terminal 
-```
-python3 manage.py runserver
-   `
+
 
 
 
