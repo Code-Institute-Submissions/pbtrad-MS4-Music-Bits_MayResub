@@ -331,11 +331,76 @@ Reviews:
   
   Any major cross-device issues have been dealt with through media queries in css.
   
-  
+**Validators**
+
+ * [W3C HTML Validator](https://validator.w3.org/)
+  * No errors other than python such as template variables.
+
+ * [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+  * No errors found.
+
+ * Tested JavaScript using google chrome dev tools:
+  * Toastjs: No Errors.
+  * countryfieldjs: No Errors.
+  * Stripejs: No Errors.
+  * footerjs: No Errors.
+
+ **Python**
+  * [PEP8](http://pep8online.com/)
+   * No errors found.
+   * All python files worked on over the course of this project have been formatted with flake8 on vscode.
+
+# Security/Defensive Design:
  
+  * Form validation using crispy forms and required fields in the apps' models ensured that users only input acceptable data.
+  
+  * All forms intelligently handle empty or invalid input fields.
+  
+  * Any sensitive code has been hidden in files such as env, IDE settings or 3rd parties.
+  
+  * Different levels of site users, authenticated users, staff users and superusers gives a range of permissions for CRUD activities on the site.
+  
+  * Extensive testing for the site navigation was done making sure everything still works. eg: navigating back to the login page after already being logged in.
+  
+  * Clear feedback to the user is given for any disallowed action.
+  
+  * All forms are autopopulated where appropriate once users are authenticated.
+  
+  * The allauth authentication system has been implemented.
+  
+  * The filing system is uniform and standard throught the numerous apps. All apps have been tested against the standard validators for code.
 
+## Deployment
 
+1. Basic requirements for deployment:
+   * Python3 to run the application.
+   * PIP to install app requirements.
+   * An IDE (eg:VSCode)
+   * GIT for cloning and version control.
+   * A Github account for saving repositories.
+   * Stripe account for implementing payment system.
 
+2. Clone the MS4-Music-Bits repository using Git by typing the following command into the terminal.
+   ```
+   git clone https://github.com/pbtrad/MS4-Music-Bits
+   ```
+
+3. Go to this folder in your IDE's terminal.
+4. Enter the following command into your terminal.
+   ```
+   python3 -m .venv venv
+   ```
+
+5. Install the requirements and dependancies from the requirements.txt file.
+   ```
+   pip3 -r requirements.txt
+   ```
+
+6. In your IDE create a file where all secret information can go eg: SECRET_KEY
+7. Type into your terminal 
+```
+python3 manage.py runserver
+   `
 
 
 
