@@ -6,7 +6,7 @@ html {
 
 
 body {
-    background: url('media/Music-bits-landing-page.jpeg') no-repeat center center fixed;
+    background: url('/media/Music-bits-landing-page.jpeg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
     height: 100vh;
