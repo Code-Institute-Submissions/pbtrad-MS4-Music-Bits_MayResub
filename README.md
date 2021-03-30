@@ -1,4 +1,5 @@
 # Music-Bits
+![pic](https://github.com/pbtrad/MS4-Music-Bits/blob/master/Large-img-landing-page.png)
 
 Welcome to [Music Bits](https://pbtrad-music-bits.herokuapp.com/) - an e-commerce website selling musical instruments adn accessories, providing expertise and choice through a satisfying shopping experience.
 
@@ -331,8 +332,140 @@ Reviews:
   
   Any major cross-device issues have been dealt with through media queries in css.
   
+  ![med](https://github.com/pbtrad/MS4-Music-Bits/blob/master/med-img-landing-page.png)
+  ![mobile](https://github.com/pbtrad/MS4-Music-Bits/blob/master/small-img-landing-page.png)
   
+**Validators**
+
+ * [W3C HTML Validator](https://validator.w3.org/)
+  * No errors other than python such as template variables.
+
+ * [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+  * No errors found.
+
+ * Tested JavaScript using google chrome dev tools:
+  * Toastjs: No Errors.
+  * countryfieldjs: No Errors.
+  * Stripejs: No Errors.
+  * footerjs: No Errors.
+
+ **Python**
+  * [PEP8](http://pep8online.com/)
+   * No errors found.
+   * All python files worked on over the course of this project have been formatted with flake8 on vscode.
+
+# Security/Defensive Design:
  
+  * Form validation using crispy forms and required fields in the apps' models ensured that users only input acceptable data.
+  
+  * All forms intelligently handle empty or invalid input fields.
+  
+  * Any sensitive code has been hidden in files such as env, IDE settings or 3rd parties.
+  
+  * Different levels of site users, authenticated users, staff users and superusers gives a range of permissions for CRUD activities on the site.
+  
+  * Extensive testing for the site navigation was done making sure everything still works. eg: navigating back to the login page after already being logged in.
+  
+  * Clear feedback to the user is given for any disallowed action.
+  
+  * All forms are autopopulated where appropriate once users are authenticated.
+  
+  * The allauth authentication system has been implemented.
+  
+  * The filing system is uniform and standard throught the numerous apps. All apps have been tested against the standard validators for code.
+
+## Deployment
+
+**Local Deployment**
+
+1. Basic requirements for deployment:
+   * Python3 to run the application.
+   * PIP to install app requirements.
+   * An IDE (eg:VSCode)
+   * GIT for cloning and version control.
+   * A Github account for saving repositories.
+   * Stripe account for implementing payment system.
+
+2. Clone the MS4-Music-Bits repository using Git by typing the following command into the terminal.
+   ```
+   git clone https://github.com/pbtrad/MS4-Music-Bits
+   ```
+
+3. Go to this folder in your IDE's terminal.
+4. Enter the following command into your terminal.
+   ```
+   python3 -m .venv venv
+   ```
+
+5. Install the requirements and dependancies from the requirements.txt file.
+   ```
+   pip3 -r requirements.txt
+   ```
+6. Run a PostgresSQL database.
+* `os.environ.setdefault('SECRET_KEY', '')`
+* `os.environ.setdefault('STRIPE_PUBLIC_KEY', '')`
+* `os.environ.setdefault('STRIPE_SECRET_KEY', '')`
+* `os.environ.setdefault('STRIPE_WH_SECRET', '')`
+* `os.environ.setdefault('EMAIL_HOST_USER', '')`
+* `os.environ.setdefault('EMAIL_HOST_PASS', '')`
+* `os.environ.setdefault('EMAIL_HOST_USER', '')`
+* `os.environ.setdefault('AWS_ACCESS_KEY_ID', '')`
+* `os.environ.setdefault('AWS_SECRET_ACCESS_KEY', '')`
+* `os.environ.setdefault('DATABASE_URL', '')`
+
+7. Add env to .gitignore file to avoid any sensitive data being pushed to github.
+8. Type into terminal to migrate
+```
+python3 manage.py migrate
+```
+9. Type into terminal to run
+```
+python3 app.py
+```
+
+**Deployng to Heroku**
+ 
+ * Sign up and login to Heroku.
+ * Once logged in select 'create new app'.
+ * Name app and select region.
+ * Create app
+ * In resources and add Heroku Postgres Database.
+ * Go back to your IDE and install dj-database-url and psycopg2-binary.
+ * Run pip3 freeze > requirements.txt.
+ * Set up database by going to settings.py and import dj-database-url
+ * In settings.py navigate to database settings and replace default database with a call to dj_database_url.parse().
+ * Add database URL found in Heroku settings config vars.
+ * Run python3 manage.py migrate .
+ * If uploading data using json fixtures you can enter python3 manage.py loaddata <fixture name>.
+ * Add superuser to log in with python3 manage.py createsuperuser.
+ * DO NOT commit with Heroku database settings visible change database back to original database URL before commit.
+ * Insall gunicorn and freeze requirements.
+ * Create our Procfile that creates a web dyno in Heroku.
+ * Temporarilly disable collect static by entering heroku config:set DISABLE_COLLECTSTATIC = 1 --<project name>.
+ * Add Host name of heroku app to allowed settings.py, allow local host also to access from your IDE.
+ * To push to heroku you may need to initialise your heroku git remote heroku git:remote -a <project name>.
+ * Then push to heroku git push heroku master.
+ * In Heroku app go to deploy tab and select github to link Heroku and whatever is pushed to github.
+ * Enable automatic deploys.
+ * Get secret key and add to heroku config settings.
+ * Go to settings.py remove secret key and replace with a call to get it from the environment *SECRET_KEY = os.environ.get('SECRET_KEY', '')
+ * Set debug to be True only if there is a variable called development in the environment DEBUG = 'DEVELOPMENT' in os.environ.
+
+## Credits
+
+* [ckz8780](https://github.com/ckz8780/boutique_ado_v1) as the entire website is built upon the boutique ado tutorial.
+* [https://codepen.io/rosemaryly/pen/OJbyjdE] for the animated search icon.
+* [Packt Video](https://www.youtube.com/watch?v=_dSCGMJcoe4&ab_channel=PacktVideo) for the basis of the Coupons app.
+* [Lara Code](https://www.youtube.com/channel/UClXcbBNNhFU9ATAcXB6U7eQ) for the basis of the review and rating system.
+* [Bootdey](https://www.bootdey.com/) for various code snippets.
+* [Mdbootstrap](https://mdbootstrap.com/) for footer.
+* Images and data scraped from [Goodwins](https://www.goodwinsmusic.ie/) and [Waltons](https://www.waltons.ie/) using [parsehub](https://parsehub.com/).
+
+## Acknowledgements:
+
+ * Code Institute tutors Jo, Cormac, Igor, Tim, Johann, Sheryl, Michael, Alan, Kevin.
+ * Adegbenga Adeye for mentoring support throughout the course.
+
 
 
 
