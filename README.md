@@ -309,7 +309,12 @@ Reviews:
   * Correct price including discounts is displayed.
   * Shipping form works.
   * Email Response to purchase is sent.
-  
+
+**Coupons:**
+ * The coupon is created by a superuser in the admin, with a code, valid from to dates and a percentage option for the discount amount.
+ * The created valid coupon when added subtracts the correct amount from total price, followed by a success toast.
+ * Entry of an invalid code results in an error toast.
+
 **Authenticated User Operations:**
  * Changing and saving personal details successful.
   
@@ -324,7 +329,7 @@ Reviews:
   * Medium: Ipad
   * Small: Galaxy 9 and iphone 6 
   
-  No major cross-device issues to be addressed.
+  Any major cross-device issues have been dealt with through media queries in css.
   
   
  
