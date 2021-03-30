@@ -131,7 +131,7 @@ The user of this website is essentially anyone who is looking to purchase a musi
 * The website features Toasts, alerting users of a successful or unsuccessful action: success, warning, info and error. Toasts last 3 seconds.
 
 **Wireframes:**
-* Wireframes can be found [here]().
+* Wireframes can be found [here](https://github.com/pbtrad/MS4-Music-Bits/tree/master/wireframes).
 
 ## Project Apps:
 
