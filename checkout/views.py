@@ -112,7 +112,7 @@ def checkout(request):
 
         # Attempt to prefill the form with any info
         # the user maintains in their profile
-        
+
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
@@ -131,7 +131,6 @@ def checkout(request):
                 order_form = OrderForm()
         else:
             order_form = OrderForm()
-            
 
     if not stripe_public_key:
         messages.warning(request, ('Stripe public key is missing.'))

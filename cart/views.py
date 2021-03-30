@@ -7,8 +7,6 @@ from coupons.forms import CouponApplyForm
 from django.utils import timezone
 
 
-
-
 @require_http_methods(["GET", "POST"])
 def coupon_apply(request):
     now = timezone.now()
@@ -156,10 +154,8 @@ def remove_from_cart(request, item_id):
 
 def get_discount(self, coupon_id):
     if self.coupon:
-        return (self.coupon.discount /Decimal('100')) * self.grand_total
+        return (self.coupon.discount / Decimal('100')) * self.grand_total
 
 
 def get_total_price_after_discount(self):
     return self.grand_total - self.get_discount()
-
-

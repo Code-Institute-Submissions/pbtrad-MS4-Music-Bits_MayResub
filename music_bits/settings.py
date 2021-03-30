@@ -33,7 +33,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pbtrad-music-bits.herokuapp.com', 'localhost', '127.0.0.1' ]
+ALLOWED_HOSTS = ['pbtrad-music-bits.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -136,7 +136,6 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-
 
 
 # Password validation

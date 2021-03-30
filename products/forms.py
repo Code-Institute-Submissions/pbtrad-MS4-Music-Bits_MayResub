@@ -24,9 +24,11 @@ class ProductForm(forms.ModelForm):
 
 
 class RateForm(forms.ModelForm):
-	text = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control mx-auto w-100 mb-3'}), required=False)
-	rate = forms.ChoiceField(choices=RATE_CHOICES, widget=forms.RadioSelect(), required=True)
+    text = forms.CharField(widget=forms.Textarea(
+        attrs={'class': 'form-control mx-auto w-100 mb-3'}), required=False)
+    rate = forms.ChoiceField(choices=RATE_CHOICES,
+                             widget=forms.RadioSelect(), required=True)
 
-	class Meta:
-		model = Review
-		fields = ('text', 'rate')
+    class Meta:
+        model = Review
+        fields = ('text', 'rate')

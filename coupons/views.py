@@ -17,7 +17,8 @@ def add_coupon(request):
             messages.success(request, 'Successfully added coupon!')
             return redirect(reverse('add_coupon'))
         else:
-            messages.error(request, 'Failed to add coupon. Please ensure the form is valid.')
+            messages.error(
+                request, 'Failed to add coupon. Please ensure the form is valid.')
     else:
         form = CouponForm(initial={'active': True})
 

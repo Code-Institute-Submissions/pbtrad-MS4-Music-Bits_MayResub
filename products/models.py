@@ -53,7 +53,6 @@ class Review(models.Model):
     text = models.TextField(max_length=3000, blank=True)
     rate = models.PositiveSmallIntegerField(choices=RATE_CHOICES)
 
-
     def __str__(self):
         return self.user.username
 
