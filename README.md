@@ -127,6 +127,7 @@ The user of this website is essentially anyone who is looking to purchase a musi
 * The call to action buttons have a 'ripple' effect when clicked, incorporating the blue into the complimentary orange, a material design effect achieved using css.
 * The footer uses some jQuery to keep it at bottom of page.
 * Icons from [FontAwesome](https://fontawesome.com/).
+* The website features Toasts, alerting users of a successful or unsuccessful action: success, warning, info and error. Toasts last 3 seconds.
 
 **Wireframes:**
 * Wireframes can be found [here]().
@@ -242,11 +243,91 @@ Reviews:
   
 ## Testing:
  
- 
+ * Google Chrome was used as primary testing browser, also some testing on firefox and safari.
 
+**Navigation**
+ * Links tested on navbar.
+ * Links tested on footer.
+ * All button links tested.
+ * Toasts tested.
+ * Product links navigate to product detail page.
+ * Update product links navigate to product detail page and update occurs.
+ * Delete product links navigate to product detail page and deletion occurs.
+ * Search bar finds correct search.
+ 
+**Purchasing**
+ * Add items to cart adds the correct item to cart.
+ * Update the cart by reducing or increasing the quantity of any item in cart.
+ * Remove cart item removes from cart.
+ * add coupon codes to bag contents and have the costs updated.
+ * prevent multiple coupons to be appended in order to get fraudalent discount.
+ * email responses to purchases.
+
+**Stripe Payments and Transaction Data**
+ * Transactions are recorded in the Postgress db and can be accessed and selectively edited.
+ * Payments are recorded on Stripe using test credit card no.
+ * Stripe webhooks.
+
+**Authentication**
+ * Login and registration links work.
+ * Links within allauth app e.g. password reset.
+ * Email response to aunthentication.
+
+**Toasts**
+ * Toasts work when called and relevent information displays, last the set 3 seconds before dissapearing.
+
+**Form Validation**
+ * **Registration Form:**
+  * Email address: input field requires an '@' character.
+  * Username
+  * Password
+
+ * **Login Form:**
+  * Email address: input field requires an '@' character.
+  * Username.
+  * Password.
+
+ * **Password Reset Form:**
+  * Email address: input field requires an '@' character.
+
+ * **Review Form:**
+  * Review posts and displays correctly.
+  * Correct rating is posted and average calculated with `reviews_avg = reviews.aggregate(Avg('rate'))`
+
+**Cart**
+ * **Add item to cart:**
+  * Correct item is added with all correct data.
+  * Correct product price is calculated.
+  * Coupon gives proper percentage discount.
+  * Update gives correct resonse with toast.
+  * Delete deletes product from cart.
+  * Empty cart displays message "Your shopping cart is empty".
+
+**Checkout**
+ * **Add item to checkout:**
+  * Item details display correctly on page.
+  * Correct price including discounts is displayed.
+  * Shipping form works.
+  * Email Response to purchase is sent.
+  
+**Authenticated User Operations:**
+ * Changing and saving personal details successful.
+  
+**Superuser CRUD Operations:**
+ * Items successfully added.
+ * Items successfully edited and updated.
+ 
+**Responsiveness:**
+  
+  All pages rendered on website have been tested for responsiveness on a range of devices:
+  * Large: HP Pavillion 17'3
+  * Medium: Ipad
+  * Small: Galaxy 9 and iphone 6 
+  
+  No major cross-device issues to be addressed.
   
   
-  
+ 
 
 
 
