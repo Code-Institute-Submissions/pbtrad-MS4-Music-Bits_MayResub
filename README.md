@@ -131,7 +131,7 @@ The user of this website is essentially anyone who is looking to purchase a musi
 * The website features Toasts, alerting users of a successful or unsuccessful action: success, warning, info and error. Toasts last 3 seconds.
 
 **Wireframes:**
-* Wireframes can be found [here]().
+* Wireframes can be found [here](https://github.com/pbtrad/MS4-Music-Bits/tree/master/wireframes).
 
 ## Project Apps:
 
@@ -463,8 +463,9 @@ python3 app.py
 
 ## Acknowledgements:
 
- * Code Institute tutors Jo, Cormac, Igor, Tim, Johann, Sheryl, Michael, Alan, Kevin.
+ * Code Institute tutors Jo, Cormac, Igor, Tim, Johann, Sheryl, Michael, Alan, Kevin and those whom I forgot.
  * Adegbenga Adeye for mentoring support throughout the course.
+ * Everyone at Code Institute for great support throughout the past year.
 
 
 
