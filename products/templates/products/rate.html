@@ -34,7 +34,7 @@
                     <span class="card-title text-dark">{{ product.name }}</span>
                     </div>
                     <br>
-                    <span class="text-dark pl-5 mt-3">Write Review</span>
+                    <span class="text-dark pl-5">Write Review</span>
                     <form method="post" action="" role="form" class="col s12 mx-auto">
                       {% csrf_token %}
                       {% for field in form %}
@@ -51,8 +51,7 @@
                 </div>
               </div>
             </div>
-      
-            </div>
+        </div>
 {% endblock %}
 
 {% block postloadjs %}
