@@ -5,6 +5,7 @@ from coupons.models import Coupon
 from products.models import Product
 from coupons.forms import CouponApplyForm
 from django.utils import timezone
+from decimal import Decimal
 
 
 @require_http_methods(["GET", "POST"])
