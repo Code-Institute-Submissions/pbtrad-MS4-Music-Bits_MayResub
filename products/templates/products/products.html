@@ -115,11 +115,10 @@
                                             </div>
                                         </form>
                                         {% endif %}
-                                        {% if product.rating %}
-                                        <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} /
-                                            5</small>
-                                        {% else %}
+                                        {% if review.rate %}
                                         <small class="text-muted">{{ reviews_avg.rate__avg |floatformat:1 }}</small>
+                                        
+                                        
                                         {% endif %}
                                         {% if request.user.is_superuser %}
                                             <small class="ml-3">
