@@ -115,11 +115,9 @@
                                             </div>
                                         </form>
                                         {% endif %}
-                                        {% if review.rate %}
                                         <small class="text-muted">{{ reviews_avg.rate__avg |floatformat:1 }}</small>
                                         
                                         
-                                        {% endif %}
                                         {% if request.user.is_superuser %}
                                             <small class="ml-3">
                                                 <a href="{% url 'edit_product' product.id %}">Edit</a>
