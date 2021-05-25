@@ -296,10 +296,10 @@ body {
     transition: background 0s;
 }
 
-.empty-cart-info {
+/*.empty-cart-info {
     position: absolute;
     left: 300px;
-}
+}*/
 
 .cart-item-header {
     background-color: #878d9c;
