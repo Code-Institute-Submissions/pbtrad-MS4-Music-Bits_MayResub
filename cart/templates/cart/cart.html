@@ -14,9 +14,9 @@
 {% block content %}
 <div class="overlay"></div>
 <div class="container pb-5 mt-5">
-    <div class="row">
-        <div class="row cart-title">
-            <div class="col">
+    <div class="row d-block">
+        <div class="row cart-title d-block">
+            <div class="col d-block">
                 <hr>
                 <h2 class="logo-font mb-4 ml-5 ml-lg-0 ml-md-0">Shopping Cart</h2>
                 <hr>
@@ -102,16 +102,16 @@
                             <form id="coupon_form" action="{% url 'apply' %}" method="post">
                                 {% csrf_token %}
                                 {{ coupon_form|crispy }}
-                                <input type="submit" class="btn ripple btn-lg text-uppercase" value="Submit  code">
+                                <input type="submit" class="btn cart-button ripple btn-block text-uppercase" value="Submit  code">
                             </form>
                 <td colspan="5" class="text-right">
-                    <a href="{% url 'products' %}" class="btn ripple btn-lg mt-4 mb-3">
+                    <a href="{% url 'products' %}" class="btn cart-button ripple btn-block mx-auto mt-4 mb-3">
                         <span class="icon">
                             <i class="fas fa-arrow-circle-left"></i>
                         </span>
                         <span class="text-uppercase">Keep Shopping</span>
                     </a>
-                    <a href="{% url 'checkout' %}" class="btn ripple btn-lg mt-4 mb-3">
+                    <a href="{% url 'checkout' %}" class="btn cart-button ripple btn-block mx-auto mt-4 mb-3">
                         <span class="text-uppercase">Secure Checkout</span>
                         <span class="icon">
                             <i class="fas fa-lock"></i>
