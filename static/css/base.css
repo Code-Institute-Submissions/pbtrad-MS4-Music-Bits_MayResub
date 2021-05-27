@@ -197,10 +197,15 @@ body {
     height: 1.5rem;
     width: 1.5rem;
 }
-
-.cart-form-input {
-    
+/* Media Query for cart-input-form */
+@media screen and (max-width: 571px) {
+    .cart-form-input {
+        width:20%;
+        margin-right:auto;
+        margin-left:auto;
+    }
 }
+
 
 .main-prod-input {
     width:3.5rem
