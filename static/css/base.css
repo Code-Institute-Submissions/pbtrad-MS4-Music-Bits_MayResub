@@ -3,8 +3,6 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 
-
-
 body {
     background: url('https://pbtrad-music-bits.s3-eu-west-1.amazonaws.com/media/Music-bits-landing-page.jpeg') no-repeat center center fixed;
     background-size: cover;
@@ -32,8 +30,6 @@ body {
     box-shadow: 0 0 4px #000;
     outline: none;
 }
-
-
 
 .overlay {
     height: 100%;
@@ -70,6 +66,8 @@ body {
 .modal.left.fade.show .modal-dialog {
     left: 0;
 }
+
+
 /* ----- MODAL STYLE ----- */
 
 .modal-content {
@@ -102,7 +100,6 @@ body {
     .navbar-brand {
         font-size: 2rem;
     }
-    
 }
 
 .text-muted {
@@ -117,8 +114,6 @@ body {
     font-size: larger;
 }
 
-
-
 .embed-responsive .card-img-top {
     object-fit: cover;
 }
@@ -126,6 +121,7 @@ body {
 .pro-img-details img {
     width: 80%;
 }
+
 .caption {
     width: 100%;
     max-width: 100%;
@@ -197,23 +193,27 @@ body {
     height: 1.5rem;
     width: 1.5rem;
 }
+
+
 /* Media Query for cart-input-form */
+
 @media screen and (max-width: 571px) {
     .cart-form-input {
-        width:20%;
-        margin-right:auto;
-        margin-left:auto;
+        width: 20%;
+        margin-right: auto;
+        margin-left: auto;
     }
 }
 
-
 .main-prod-input {
-    width:3.5rem
+    width: 3.5rem
 }
 
 .allauth-form-inner-content p {
-    margin-top: 1.5rem; /* mt-4 */
-    color: #6c757d; /* text-secondary */
+    margin-top: 1.5rem;
+    /* mt-4 */
+    color: #6c757d;
+    /* text-secondary */
 }
 
 .allauth-form-inner-content input {
@@ -231,8 +231,8 @@ body {
 
 .allauth-form-inner-content button,
 .allauth-form-inner-content input[type='submit'] {
-	/* btn */
-	display: inline-block;
+    /* btn */
+    display: inline-block;
     font-weight: 400;
     color: #fff;
     text-align: center;
@@ -247,22 +247,21 @@ body {
     font-size: 1rem;
     line-height: 1.5;
     border-radius: 0;
-
     /* standard bootstrap btn transitions */
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .allauth-form-inner-content button:hover,
-.allauth-form-inner-content input[type='submit']:hover {	
-	color: #fff;
+.allauth-form-inner-content input[type='submit']:hover {
+    color: #fff;
     background-color: #222;
     border-color: #222;
 }
 
 .allauth-form-inner-content a {
-	color: #17a2b8; /* text-info */
+    color: #17a2b8;
+    /* text-info */
 }
-
 
 .btn-file {
     position: relative;
@@ -296,7 +295,6 @@ body {
     color: white;
     background-color: #17a2b8;
     box-shadow: 0 0 4px #000;
-
 }
 
 .ripple:hover {
@@ -308,6 +306,7 @@ body {
     background-size: 100%;
     transition: background 0s;
 }
+
 
 /*.empty-cart-info {
     position: absolute;
@@ -321,7 +320,6 @@ body {
 .h6 {
     background-color: #878d9c;
 }
-
 
 .dropdown-menu {
     background: #fafafa;
@@ -357,14 +355,13 @@ body {
     }
     .empty-cart-info {
         position: static;
-        
     }
     .container-search {
         position: relative;
         left: 20px;
     }
     #coupon_form {
-        max-width:50%;
+        max-width: 50%;
         margin-left: auto;
         margin-right: auto;
     }
@@ -375,9 +372,8 @@ body {
 }
 
 
-
-
 /*--Search-Animation--*/
+
 .container-search {
     transform: translate(-50%);
 }
@@ -452,4 +448,3 @@ body {
 textarea {
     width: 80%;
 }
-
