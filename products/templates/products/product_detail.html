@@ -55,43 +55,43 @@
                                             id="id_qty_{{ product.id }}">
                                     </div>
                                 </div>
-
-                                <div class="form-group">
-                                    {% with product.string_gauge as sg %}
-                                    {% if sg %}
-                                    <div class="col-12">
-                                        <p><strong>String Gauge:</strong></p>
-                                        <select class="form-control rounded-0 w-50" name="product_size"
-                                            id='product_size'>
-                                            <option value="heavy">Heavy</option>
-                                            <option value="medium" selected>Medium</option>
-                                            <option value="light">Light</option>
-                                            <option value="extra-light">Extra-Light</option>
-                                        </select>
-                                    </div>
-                                    {% endif %}
-                                    {% with product.has_sizes as s %}
-                                    {% if s %}
-                                    <div class="col-12 pl-0">
-                                        <p class="mb-0">Size:</p>
-                                        <select class="form-control rounded-0 w-50" name="product_size"
-                                            id='product_size'>
-                                            <option value="full">4/4</option>
-                                            <option value="medium" selected>3/4</option>
-                                            <option value="small">1/2</option>
-                                            <option value="extra-small">1/4</option>
-                                        </select>
-                                    </div>
-                                    {% endif %}
+                                {% with product.string_gauge as sg %}
+                                {% if sg %}
+                                <div class="col-12">
+                                    <p><strong>String Gauge:</strong></p>
+                                    <select class="form-control w-50" name="product_size"
+                                        id='product_size'>
+                                        <option value="heavy">Heavy</option>
+                                        <option value="medium" selected>Medium</option>
+                                        <option value="light">Light</option>
+                                        <option value="extra-light">Extra-Light</option>
+                                    </select>
+                                </div>
+                                {% endif %}
+                                {% with product.has_sizes as s %}
+                                {% if s %}
+                                <div class="col-12 pl-0">
+                                    <p class="mb-0">Size:</p>
+                                    <select class="form-control w-25" name="product_size"
+                                        id='product_size'>
+                                        <option value="full">4/4</option>
+                                        <option value="medium" selected>3/4</option>
+                                        <option value="small">1/2</option>
+                                        <option value="extra-small">1/4</option>
+                                    </select>
+                                </div>
+                                {% endif %}
+                                <div class="form-group mx-auto">
+                                    
                                     <div class="col{% if sg or s %}-12 mt-2{% endif %}">
-                                        <input type="submit" class="btn ripple text-uppercase mt-5" value="Add to Cart">
-                                        <a href="{% url 'products' %}" class="btn ripple mt-5">
+                                        <input type="submit" class="btn ripple btn-block text-uppercase mt-3" value="Add to Cart">
+                                        <a href="{% url 'products' %}" class="btn btn-block ripple mt-3">
                                             <span class="icon">
                                                 <i class="fas fa-arrow-circle-left"></i>
                                             </span>
                                             <span class="text-uppercase">Keep Shopping</span>
                                         </a>
-                                        <a href="{% url 'view_cart' %}" class="btn ripple mt-5">
+                                        <a href="{% url 'view_cart' %}" class="btn btn-block ripple mt-3">
                                             <span class="text-uppercase">Cart</span>
                                             <span class="icon">
                                                 <i class="fas fa-shopping-cart"></i>
