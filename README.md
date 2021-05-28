@@ -451,6 +451,28 @@ python3 app.py
  * Go to settings.py remove secret key and replace with a call to get it from the environment *SECRET_KEY = os.environ.get('SECRET_KEY', '')
  * Set debug to be True only if there is a variable called development in the environment DEBUG = 'DEVELOPMENT' in os.environ.
 
+## Notes on Resubmission:
+
+ Feedback from the assessment team addressed:
+ 
+ * 1.2: X-scroll issue caused by too much margin added to nav elements making the navbar wider than the body.
+   Solution: Margin reduced on nav elements making sure all elements in body are contained within.  Add to cart button added to main products page as recommended.
+ 
+ * 1.4: Server Error (500) when negative values are added in Quantity field in the product details page.
+   Solution: Javascript added that prevents negative values or blank in Quantity field in the product details page.
+ 
+ * 1.8: Layout off grid on medium screen sizes caused by navbar larger than body.
+   Solution: Reduced margin from navbar so not to overflow.
+ 
+ * 4.1: Checkout sometimes leads to a server error when fields are incorrectly filled.
+   Javascript added for defensive design preventing negative values in fields and also blank. In checkout models OrderLineItem product had size charfield max_length set to 2, checking out items with a size or string guage would lead to Server Error (500) because sizes were up to 11 characters eg: extra-light, 
+ charfield max_length increased to solve this issue.
+ 
+ * 5.4: Please refer to commits made from when I resumed project for resubmission - beginning 19th May.
+   
+ 
+ 
+ 
 ## Credits
 
 * [ckz8780](https://github.com/ckz8780/boutique_ado_v1) as the entire website is built upon the boutique ado tutorial.
