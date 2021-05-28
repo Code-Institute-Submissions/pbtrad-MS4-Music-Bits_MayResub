@@ -205,6 +205,15 @@ body {
     }
 }
 
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.cart-form-input {
+	    width:3rem;
+	    margin-right:auto;
+	    margin-left:auto;
+	}
+}
+
+
 .main-prod-input {
     width: 3.5rem
 }
